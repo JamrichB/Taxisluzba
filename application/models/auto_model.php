@@ -9,7 +9,7 @@ class Auto_model extends CI_Model{
 
 	function getRows($id= ""){
 		if (!empty($id)){
-			$query = $this->db->get_where('auto',array('id_auto'=> $id));
+			$query = $this->db->get_where('auto',array('id'=> $id));
 			return $query -> row_array();
 		} else{
 			$query = $this->db->get('auto');
@@ -28,7 +28,7 @@ class Auto_model extends CI_Model{
 
 	public function update($data,$id){
 		if (!empty($data) && !empty($id)){
-			$update = $this->db->update('auto',$data, array('id_auto'=>$id));
+			$update = $this->db->update('auto',$data, array('id'=>$id));
 			return $update?true:false;
 		}else{
 			return false;
@@ -36,7 +36,7 @@ class Auto_model extends CI_Model{
 	}
 
 	public function delete($id){
-		$delete = $this->db->delete('auto',array('id_auto'=>$id));
+		$delete = $this->db->delete('auto',array('id'=>$id));
 		return $delete?true:false;
 	}
 }

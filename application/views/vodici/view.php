@@ -6,19 +6,19 @@
 			<div class="panel-body">
 				<div class="form-group">
 					<label>ID:</label>
-					<p><?php echo !empty($vodici['id_vodici'])? $vodici['id_vodici']:''; ?></p>
+					<p><?php echo !empty($vodici['id'])?$vodici['id']:''; ?></p>
 				</div>
 				<div class="form-group">
 					<label>Meno:</label>
-					<p><?php echo !empty($vodici['meno'])? $vodici['meno']:''; ?></p>
+					<p><?php echo !empty($vodici['meno'])?$vodici['meno']:''; ?></p>
 				</div>
 				<div class="form-group">
 					<label>Priezvisko:</label>
-					<p><?php echo !empty($vodici['priezvisko'])? $vodici['priezvisko']:''; ?></p>
+					<p><?php echo !empty($vodici['priezvisko'])?$vodici['priezvisko']:''; ?></p>
 				</div>
 				<div class="form-group">
 					<label>Auto správne:</label>
-					<p><?php echo !empty($vodici['cele_auto'])? $vodici['cele_auto']:''; ?></p>
+					<p><?php echo !empty($vodici['cele_auto'])?$vodici['cele_auto']:''; ?></p>
 				</div>
 			</div>
 		</div>

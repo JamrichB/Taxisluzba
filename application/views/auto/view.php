@@ -6,7 +6,7 @@
 			<div class="panel-body">
 				<div class="form-group">
 					<label>ID:</label>
-					<p><?php echo !empty($auto['id_auto'])?$auto['id_auto']:''; ?></p>
+					<p><?php echo !empty($auto['id'])?$auto['id']:''; ?></p>
 				</div>
 				<div class="form-group">
 					<label>Znacka:</label>

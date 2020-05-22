@@ -79,14 +79,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<tbody id="userData">
 	<?php if(!empty($vodici)): foreach($vodici as $vodic): ?>
 		<tr>
-			<td><?php echo $vodic['id_vodici'].'.'; ?></td>
+			<td><?php echo $vodic['id'].'.'; ?></td>
 			<td><?php echo $vodic['meno']; ?></td>
 			<td><?php echo $vodic['priezvisko']; ?></td>
 			<td><?php echo $vodic['id_auto']; ?></td>
 			<td>
-				<a href="<?php echo site_url('vodici/view/'.$vodic['id_vodici']); ?>"class="glyphicon glyphicon-eye-open">View</a>
-				<a href="<?php echo site_url('vodici/edit/'.$vodic['id_vodici']); ?>"class="glyphicon glyphicon-edit">Edit</a>
-				<a href="<?php echo site_url('vodici/delete/'.$vodic['id_vodici']); ?>"class="glyphicon glyphicon-trash" onclick="return confirm('Are you sure to delete?')">Delete</a>
+				<a href="<?php echo site_url('vodici/view/'.$vodic['id']); ?>"class="glyphicon glyphicon-eye-open">View</a>
+				<a href="<?php echo site_url('vodici/edit/'.$vodic['id']); ?>"class="glyphicon glyphicon-edit">Edit</a>
+				<a href="<?php echo site_url('vodici/delete/'.$vodic['id']); ?>"class="glyphicon glyphicon-trash" onclick="return confirm('Are you sure to delete?')">Delete</a>
 			</td>
 		</tr>
 	<?php endforeach; else: ?>

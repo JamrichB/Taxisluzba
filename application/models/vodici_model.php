@@ -8,18 +8,18 @@ class Vodici_model extends CI_Model {
 
 
 
-	function ZobrazVodicaSpravne($id=""){
+	function ZobrazAutoSpravne($id=""){
 		if(!empty($id)){
-			$this->db->select('vodici.id_vodici, vodici.meno, vodici.priezvisko, CONCAT(auto.znacka," ", auto.model) AS cele_auto')
-				->from('vodici')
-				->join('auto', 'vodici.id_auto = auto.id_auto')
-				->where('auto.id_auto',$id);
+			$this->db->select('vodici.id, vodici.meno, vodici.priezvisko, CONCAT(auto.znacka," ", auto.model) AS cele_auto')
+				->from('auto')
+				->join('vodici', 'auto.id = vodici.id_auto')
+				->where('vodici.id',$id);
 			$query = $this->db->get();
 			return $query->row_array();
 		}else{
-			$this->db->select('vodici.id_vodici, vodici.meno, vodici.priezvisko, CONCAT(auto.znacka," ", auto.model) AS cele_auto')
-				->from('vodici')
-				->join('auto', 'vodici.id_auto = auto.id_auto');
+			$this->db->select('vodici.id, vodici.meno, vodici.priezvisko, CONCAT(auto.znacka," ", auto.model) AS cele_auto')
+				->from('auto')
+				->join('vodici', 'auto.id = vodici.id_auto');
 			$query = $this->db->get();
 			return $query->result_array();
 		}
@@ -29,14 +29,14 @@ class Vodici_model extends CI_Model {
 	//  naplnenie selectu z tabulky studenti
 	public function NaplnDropdownAuta($id = ""){
 		$this->db->order_by('model')
-			->select('id_auto, CONCAT(znacka," ", model) AS cele_auto')
+			->select('id, CONCAT(znacka," ", model) AS cele_auto')
 			->from('auto');
 		$query = $this->db->get();
 		if ($query->num_rows() > 0) {
 			$dropdowns = $query->result();
 			foreach ($dropdowns as $dropdown)
 			{
-				$dropdownlist[$dropdown->id_auto] = $dropdown->cele_auto;
+				$dropdownlist[$dropdown->id] = $dropdown->cele_auto;
 			}
 			$dropdownlist[''] = 'Vyberte auto';
 			return $dropdownlist;
@@ -56,7 +56,7 @@ class Vodici_model extends CI_Model {
 	// aktualizacia zaznamu
 	public function update($data, $id) {
 		if(!empty($data) && !empty($id)){
-			$update = $this->db->update('vodici', $data, array('id_vodici'=>$id));
+			$update = $this->db->update('vodici', $data, array('id'=>$id));
 			return $update?true:false;
 		}else{
 			return false;
@@ -65,7 +65,7 @@ class Vodici_model extends CI_Model {
 
 	// odstranenie zaznamu
 	public function delete($id){
-		$delete = $this->db->delete('vodici',array('id_vodici'=>$id));
+		$delete = $this->db->delete('vodici',array('id'=>$id));
 		return $delete?true:false;
 	}
 

@@ -54,4 +54,5 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['vodici'] = 'vodici';
 $route['auto'] = 'auto';
+$route['cesty'] = 'cesty';
 $route['(:any)'] = 'welcome';

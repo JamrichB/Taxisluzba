@@ -27,13 +27,13 @@
 					<tbody id="userData">
 					<?php if(!empty($auto)): foreach($auto as $auto1): ?>
 						<tr>
-							<td><?php echo $auto1['id_auto'].'.'; ?></td>
+							<td><?php echo $auto1['id'].'.'; ?></td>
 							<td><?php echo $auto1['znacka']; ?></td>
 							<td><?php echo $auto1['model']; ?></td>
 							<td>
-								<a href="<?php echo site_url('auto/view/'.$auto1['id_auto']); ?>"class="glyphicon glyphicon-eye-open"></a>
-								<a href="<?php echo site_url('auto/edit/'.$auto1['id_auto']); ?>"class="glyphicon glyphicon-edit"></a>
-								<a href="<?php echo site_url('auto/delete/'.$auto1['id_auto']); ?>"class="glyphicon glyphicon-trash" onclick="return confirm('Are you sure to delete?')"></a>
+								<a href="<?php echo site_url('auto/view/'.$auto1['id']); ?>"class="glyphicon glyphicon-eye-open"></a>
+								<a href="<?php echo site_url('auto/edit/'.$auto1['id']); ?>"class="glyphicon glyphicon-edit"></a>
+								<a href="<?php echo site_url('auto/delete/'.$auto1['id']); ?>"class="glyphicon glyphicon-trash" onclick="return confirm('Are you sure to delete?')"></a>
 							</td>
 						</tr>
 					<?php endforeach; else: ?>

@@ -23,7 +23,7 @@ class Vodici extends CI_Controller
 		}
 
 
-		$data['vodici'] = $this->Vodici_model->ZobrazVodicaSpravne();
+		$data['vodici'] = $this->Vodici_model->ZobrazAutoSpravne();
 		$data['title'] = 'Zoznam vodičov';
 		//nahratie zoznamu studentov
 		$this->load->view('templates/header', $data);
@@ -37,7 +37,7 @@ class Vodici extends CI_Controller
 
 		//kontrola, ci bolo zaslane id riadka
 		if(!empty($id)){
-			$data['vodici'] = $this->Vodici_model->ZobrazVodicaSpravne($id);
+			$data['vodici'] = $this->Vodici_model->ZobrazAutoSpravne($id);
 			$data['title'] = 'Detail vodič';
 
 			//nahratie detailu zaznamu
@@ -97,7 +97,7 @@ class Vodici extends CI_Controller
 	public function edit($id){
 		$data = array();
 		//ziskanie dat z tabulky
-		$postData = $this->Vodici_model->ZobrazVodicaSpravne($id);
+		$postData = $this->Vodici_model->ZobrazAutoSpravne($id);
 
 		//zistenie, ci bola zaslana poziadavka na aktualizaciu
 		if($this->input->post('postSubmit')){
@@ -128,7 +128,7 @@ class Vodici extends CI_Controller
 		}
 
 		$data['auto'] = $this->Vodici_model->NaplnDropdownAuta();
-		$data['vybrane_auto'] = $postData['idstudent'];
+		$data['vybrane_auto'] = $postData['id_auto'];
 		$data['post'] = $postData;
 		$data['title'] = 'Aktualizovať údaje';
 		$data['action'] = 'edit';
