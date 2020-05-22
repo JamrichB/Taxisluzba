@@ -27,6 +27,7 @@ class Vodici extends CI_Controller
 		$data['title'] = 'Zoznam vodičov';
 		//nahratie zoznamu studentov
 		$this->load->view('templates/header', $data);
+		$this->load->view('templates/navbar', $data);
 		$this->load->view('vodici/index', $data);
 		$this->load->view('templates/footer');
 	}

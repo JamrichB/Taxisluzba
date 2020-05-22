@@ -27,6 +27,7 @@ class Zakaznici extends CI_Controller
 		$data['title'] = 'Zoznam zakaznikov';
 		//nahratie zoznamu studentov
 		$this->load->view('templates/header', $data);
+		$this->load->view('templates/navbar',$data);
 		$this->load->view('zakaznici/index', $data);
 		$this->load->view('templates/footer');
 	}

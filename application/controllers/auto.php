@@ -25,6 +25,7 @@ class Auto extends  CI_Controller{
 		//include 'templates/header.php';
 
 		$this->load->view('templates/header',$data);
+		$this->load->view('templates/navbar',$data);
 		$this->load->view('auto/index',$data);
 		$this->load->view('templates/footer');
 	}
