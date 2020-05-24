@@ -20,6 +20,7 @@ class Cesty_model extends CI_Model {
 			$this->db->select('cesty.id, cesty.datum, cesty.trasa, cesty.pocet_km, CONCAT(vodici.meno," ", vodici.priezvisko) AS cely_vodic')
 				->from('vodici')
 				->join('cesty', 'vodici.id = cesty.id_vodici');
+			$this->db->limit(5,$this->uri->segment(3));
 			$query = $this->db->get();
 			return $query->result_array();
 		}

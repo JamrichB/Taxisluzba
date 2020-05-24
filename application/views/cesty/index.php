@@ -45,6 +45,7 @@
 					<?php endif; ?>
 					</tbody>
 				</table>
+				<?php echo $this->pagination->create_links(); ?>
 			</div>
 		</div>
 	</div>

@@ -12,7 +12,7 @@ class Auto_model extends CI_Model{
 			$query = $this->db->get_where('auto',array('id'=> $id));
 			return $query -> row_array();
 		} else{
-			$query = $this->db->get('auto');
+			$query = $this->db->get('auto','5',$this->uri->segment(3));
 			return  $query->result_array();
 		}
 	}

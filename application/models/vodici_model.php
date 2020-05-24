@@ -20,6 +20,7 @@ class Vodici_model extends CI_Model {
 			$this->db->select('vodici.id, vodici.meno, vodici.priezvisko, CONCAT(auto.znacka," ", auto.model) AS cele_auto')
 				->from('auto')
 				->join('vodici', 'auto.id = vodici.id_auto');
+			$this->db->limit(5,$this->uri->segment(3));
 			$query = $this->db->get();
 			return $query->result_array();
 		}

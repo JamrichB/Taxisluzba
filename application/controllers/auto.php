@@ -11,6 +11,38 @@ class Auto extends  CI_Controller{
 
 	public function index(){
 		$data = array();
+		$this->load->library('pagination');
+		$query2=$this->db->get('auto');
+
+		$config['base_url']=base_url().'index.php/auto/index';
+		$config['total_rows']=$query2->num_rows();
+		$config['per_page']=5;
+
+		$config['full_tag_open']='<ul class="pagination">';
+		$config['full_tag_close']='</ul>';
+
+		$config['first_tag_open']='<li>';
+		$config['last_tag_open']='<li>';
+
+		$config['next_tag_open']='<li>';
+		$config['prev_tag_open']='<li>';
+
+		$config['num_tag_open']='<li>';
+		$config['num_tag_close']='</li>';
+
+		$config['first_tag_close']='</li>';
+		$config['last_tag_close']='</li>';
+
+		$config['next_tag_close']='</li>';
+		$config['prev_tag_close']='</li>';
+
+		$config['cur_tag_open']="<li class=\"active\"><span><b>";
+		$config['cur_tag_close']="</b></span></li>";
+
+		$this->pagination->initialize($config);
+
+
+
 		if ($this->session->userdata('success_msg')){
 			$data['success_msg'] = $this->session->userdata('success_msg');
 			$this->session->unset_userdata('success_msg');
