@@ -69,6 +69,11 @@ class Zakaznici_model extends CI_Model {
 		$delete = $this->db->delete('zakaznici',array('id'=>$id));
 		return $delete?true:false;
 	}
+	function getMesiacZakaznik(){
+		return $this->db->query('
+	SELECT CONCAT(MONTH(cesty.datum),\'/\',YEAR(cesty.datum)) as mesiac, COUNT(zakaznici.id) as pocet FROM `zakaznici`
+	 INNER JOIN cesty ON cesty.id=zakaznici.id_cesty GROUP BY mesiac')->result_array();
+	}
 
 }
 

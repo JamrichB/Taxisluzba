@@ -11,6 +11,7 @@ class Zakaznici extends CI_Controller
 	}
 	public function index(){
 		$data = array();
+		$data['charts']=$this->Zakaznici_model->getMesiacZakaznik();
 
 		$this->load->library('pagination');
 		$query2=$this->db->get('zakaznici');

@@ -39,4 +39,10 @@ class Auto_model extends CI_Model{
 		$delete = $this->db->delete('auto',array('id'=>$id));
 		return $delete?true:false;
 	}
+	function getZnackaZakaznik(){
+		return $this->db->query('
+		SELECT auto.znacka AS znacka, COUNT(zakaznici.id) as customer FROM `auto` 
+		INNER JOIN vodici ON vodici.id_auto=auto.id INNER JOIN cesty ON cesty.id_vodici=vodici.id 
+		INNER JOIN zakaznici ON zakaznici.id_cesty=cesty.id GROUP BY znacka')->result_array();
+	}
 }

@@ -11,6 +11,8 @@ class Auto extends  CI_Controller{
 
 	public function index(){
 		$data = array();
+		$data['charts']=$this->Auto_model->getZnackaZakaznik();
+
 		$this->load->library('pagination');
 		$query2=$this->db->get('auto');
 
