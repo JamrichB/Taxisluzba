@@ -11,6 +11,7 @@ class Vodici extends CI_Controller
 	}
 	public function index(){
 		$data = array();
+		$data['charts']=$this->Vodici_model->getVodicKM();
 
 		$this->load->library('pagination');
 		$query2=$this->db->get('vodici');

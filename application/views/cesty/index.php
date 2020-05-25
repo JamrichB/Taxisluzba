@@ -1,3 +1,31 @@
+<head>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript">
+		google.charts.load('current', {'packages':['corechart']});
+		google.charts.setOnLoadCallback(drawChart);
+
+		function drawChart() {
+
+			var data = google.visualization.arrayToDataTable([
+				['Cesta', 'Cena'],
+				<?php
+				foreach($charts as $chart){
+					echo "['".$chart['cesta']."', ".$chart['cena']."],";
+				}
+				?>
+			]);
+
+			var options = {
+				title: 'Cena každej cesty:'
+			};
+
+			var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+			chart.draw(data, options);
+		}
+	</script>
+
+</head>
 <div class="container">
 	<?php if(!empty($success_msg)){ ?>
 		<div class="col-xs-12">
@@ -47,6 +75,8 @@
 				</table>
 				<?php echo $this->pagination->create_links(); ?>
 			</div>
+			<div id="piechart" style="width:900px; height: 500px;"></div>
+
 		</div>
 	</div>
 

@@ -11,6 +11,8 @@ class Cesty extends CI_Controller
 	}
 	public function index(){
 		$data=array();
+		$data['charts']=$this->Cesty_model->getCenaCesty();
+
 		$this->load->library('pagination');
 		$query2=$this->db->get('cesty');
 
@@ -189,4 +191,5 @@ class Cesty extends CI_Controller
 
 		redirect('/cesty');
 	}
+
 }

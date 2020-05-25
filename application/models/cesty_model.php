@@ -24,8 +24,10 @@ class Cesty_model extends CI_Model {
 			$query = $this->db->get();
 			return $query->result_array();
 		}
-
 	}
+
+
+
 
 	//  naplnenie selectu z tabulky studenti
 	public function NaplnDropdownVodici($id = ""){
@@ -70,6 +72,11 @@ class Cesty_model extends CI_Model {
 		return $delete?true:false;
 	}
 
+	function getCenaCesty(){
+		return $this->db->query('
+		SELECT cesty.trasa AS cesta , ROUND(SUM(zakaznici.platba)) AS cena FROM `zakaznici`
+		JOIN cesty ON cesty.id=zakaznici.id_cesty GROUP BY cesty.trasa')->result_array();
+	}
 }
 
 

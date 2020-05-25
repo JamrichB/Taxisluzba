@@ -1,26 +1,27 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Vodici_model extends CI_Model {
+class Vodici_model extends CI_Model
+{
 	public function __construct()
 	{
 		$this->load->database();
 	}
 
 
-
-	function ZobrazAutoSpravne($id=""){
-		if(!empty($id)){
+	function ZobrazAutoSpravne($id = "")
+	{
+		if (!empty($id)) {
 			$this->db->select('vodici.id, vodici.meno, vodici.priezvisko, CONCAT(auto.znacka," ", auto.model) AS cele_auto')
 				->from('auto')
 				->join('vodici', 'auto.id = vodici.id_auto')
-				->where('vodici.id',$id);
+				->where('vodici.id', $id);
 			$query = $this->db->get();
 			return $query->row_array();
-		}else{
+		} else {
 			$this->db->select('vodici.id, vodici.meno, vodici.priezvisko, CONCAT(auto.znacka," ", auto.model) AS cele_auto')
 				->from('auto')
 				->join('vodici', 'auto.id = vodici.id_auto');
-			$this->db->limit(5,$this->uri->segment(3));
+			$this->db->limit(5, $this->uri->segment(3));
 			$query = $this->db->get();
 			return $query->result_array();
 		}
@@ -28,15 +29,15 @@ class Vodici_model extends CI_Model {
 	}
 
 	//  naplnenie selectu z tabulky studenti
-	public function NaplnDropdownAuta($id = ""){
+	public function NaplnDropdownAuta($id = "")
+	{
 		$this->db->order_by('model')
 			->select('id, CONCAT(znacka," ", model) AS cele_auto')
 			->from('auto');
 		$query = $this->db->get();
 		if ($query->num_rows() > 0) {
 			$dropdowns = $query->result();
-			foreach ($dropdowns as $dropdown)
-			{
+			foreach ($dropdowns as $dropdown) {
 				$dropdownlist[$dropdown->id] = $dropdown->cele_auto;
 			}
 			$dropdownlist[''] = 'Vyberte auto';
@@ -45,31 +46,40 @@ class Vodici_model extends CI_Model {
 	}
 
 	// vlozenie zaznamu
-	public function insert($data = array()) {
+	public function insert($data = array())
+	{
 		$insert = $this->db->insert('vodici', $data);
-		if($insert){
+		if ($insert) {
 			return $this->db->insert_id();
-		}else{
+		} else {
 			return false;
 		}
 	}
 
 	// aktualizacia zaznamu
-	public function update($data, $id) {
-		if(!empty($data) && !empty($id)){
-			$update = $this->db->update('vodici', $data, array('id'=>$id));
-			return $update?true:false;
-		}else{
+	public function update($data, $id)
+	{
+		if (!empty($data) && !empty($id)) {
+			$update = $this->db->update('vodici', $data, array('id' => $id));
+			return $update ? true : false;
+		} else {
 			return false;
 		}
 	}
 
 	// odstranenie zaznamu
-	public function delete($id){
-		$delete = $this->db->delete('vodici',array('id'=>$id));
-		return $delete?true:false;
+	public function delete($id)
+	{
+		$delete = $this->db->delete('vodici', array('id' => $id));
+		return $delete ? true : false;
 	}
 
+	function getVodicKM()
+	{
+		return $this->db->query('
+		SELECT vodici.priezvisko AS vodic, SUM(cesty.pocet_km) AS najazdenych FROM `cesty` 
+		JOIN vodici ON vodici.id=cesty.id_vodici GROUP BY vodic')->result_array();
+	}
 }
 
 
