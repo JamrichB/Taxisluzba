@@ -24,7 +24,26 @@
 			chart.draw(data, options);
 		}
 	</script>
-
+	<script>
+		function myFunction() {
+			var input, filter, table, tr, td, i, txtValue;
+			input = document.getElementById("myInput");
+			filter = input.value.toUpperCase();
+			table = document.getElementById("myTable");
+			tr = table.getElementsByTagName("tr");
+			for (i = 0; i < tr.length; i++) {
+				td = tr[i].getElementsByTagName("td")[1];
+				if (td) {
+					txtValue = td.textContent || td.innerText;
+					if (txtValue.toUpperCase().indexOf(filter) > -1) {
+						tr[i].style.display = "";
+					} else {
+						tr[i].style.display = "none";
+					}
+				}
+			}
+		}
+	</script>
 </head>
 <div class="container">
 	<?php if(!empty($success_msg)){ ?>
@@ -38,12 +57,13 @@
 	<?php } ?>
 	<div class="row">
 		<h1>Zoznam áut</h1>
+		<input style="margin-bottom: 10px; margin-left: 15px; width: 200px" type="text" id="myInput" onkeyup="myFunction()" placeholder="Vyhľadajte auto podľa značky" title="Type in a name">
 	</div>
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="panel panel-default ">
 				<div class="panel-heading"> Pridaj auto <a href="<?php echo site_url('auto/add/'); ?>" class="glyphicon glyphicon-plus pull-right" ></a></div>
-				<table class="table table-striped">
+				<table id="myTable" class="table table-striped">
 					<thead>
 					<tr>
 						<th width="20%">ID</th>
