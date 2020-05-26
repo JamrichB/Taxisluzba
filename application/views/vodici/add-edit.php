@@ -22,7 +22,7 @@
 						</div>
 						<div class="form-group">
 							<label for="title">Priezvisko</label>
-							<input type="text" class="form-control" name="priezvisko" id="priezvisko" placeholder="Vložte priezvisko value="<?php echo !empty($post['priezvisko'])?$post['priezvisko']:''; ?>">
+							<input type="text" class="form-control" name="priezvisko" id="priezvisko" placeholder="Vložte priezvisko" value="<?php echo !empty($post['priezvisko'])?$post['priezvisko']:''; ?>">
 							<?php echo form_error('priezvisko','<p class="help-block text-danger">','</p>'); ?>
 						</div>
 						<div class="form-group">

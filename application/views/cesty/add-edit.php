@@ -22,12 +22,12 @@
 						</div>
 						<div class="form-group">
 							<label for="title">Trasa</label>
-							<input type="text" class="form-control" name="trasa" id="trasa" placeholder="Vložte trasu value="<?php echo !empty($post['trasa'])?$post['trasa']:''; ?>">
+							<input type="text" class="form-control" name="trasa" id="trasa" placeholder="Vložte trasu" value="<?php echo !empty($post['trasa'])?$post['trasa']:''; ?>">
 							<?php echo form_error('trasa','<p class="help-block text-danger">','</p>'); ?>
 						</div>
 						<div class="form-group">
 							<label for="title">Počet km</label>
-							<input type="text" class="form-control" name="pocet_km" id="pocet_km" placeholder="Vložte počet km value="<?php echo !empty($post['pocet_km'])?$post['pocet_km']:''; ?>">
+							<input type="text" class="form-control" name="pocet_km" id="pocet_km" placeholder="Vložte počet km" value="<?php echo !empty($post['pocet_km'])?$post['pocet_km']:''; ?>">
 							<?php echo form_error('pocet_km','<p class="help-block text-danger">','</p>'); ?>
 						</div>
 						<div class="form-group">

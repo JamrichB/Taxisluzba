@@ -16,7 +16,7 @@
 			]);
 
 			var options = {
-				title: 'Náročnosť jednotlivých mesiacov'
+				title: 'Náročnosť jednotlivých mesiacov v rámci počtu zákazníkov'
 			};
 
 			var chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -37,7 +37,7 @@
 		</div>
 	<?php } ?>
 	<div class="row">
-		<h1>Zoznam vodičov</h1>
+		<h1>Zoznam zákazníkov</h1>
 	</div>
 	<div class="row">
 		<div class="col-xs-12">

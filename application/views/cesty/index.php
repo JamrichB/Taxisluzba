@@ -16,7 +16,7 @@
 			]);
 
 			var options = {
-				title: 'Cena každej cesty:'
+				title: 'Porovnanie jednotlivých ciest v rámci cien'
 			};
 
 			var chart = new google.visualization.PieChart(document.getElementById('piechart'));

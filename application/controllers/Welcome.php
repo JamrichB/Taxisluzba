@@ -21,7 +21,7 @@ class Welcome extends CI_Controller {
 
 	public function index()
 	{
-		$data['meno'] = 'Barbora';
+		$data['title'] = 'TAXI';
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/navbar', $data);
 		$this->load->view('welcome_message', $data);

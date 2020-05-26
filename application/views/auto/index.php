@@ -16,7 +16,7 @@
 			]);
 
 			var options = {
-				title: 'Obľúbenosť áut medzi zákazníkmi:'
+				title: 'Obľúbenosť áut medzi zákazníkmi'
 			};
 
 			var chart = new google.visualization.PieChart(document.getElementById('piechart'));

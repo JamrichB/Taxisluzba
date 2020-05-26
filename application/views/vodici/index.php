@@ -16,7 +16,7 @@
 			]);
 
 			var options = {
-				title: 'Najazdené km každého vodiča:'
+				title: 'Porovnanie najazdených kilometrov všetkých vodičov'
 			};
 
 			var chart = new google.visualization.PieChart(document.getElementById('piechart'));
